@@ -1,7 +1,7 @@
 from typing import List, Dict
 import mysql.connector
 import simplejson as json
-from flask import Flask, Response
+from flask import Flask, Response, render_template
 
 app = Flask(__name__)
 
@@ -31,6 +31,13 @@ def index() -> str:
     js = json.dumps(data_import())
     resp = Response(js, status=200, mimetype='application/json')
     return resp
+
+@app.route('/index/<int:bio_id>', methods=['GET'])
+def record_view(bio_id):
+    cursor = mysql.get_db().cursor()
+    cursor.execute('SELECT * FROM biostats WHERE id=%s', bio_id)
+    result = cursor.fetchall()
+    return render_template('index.html', title='index Form', biostats=result)
 
 
 if __name__ == '__main__':
