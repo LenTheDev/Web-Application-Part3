@@ -1,6 +1,6 @@
-#SQL file creation
+# SQL file creation
 ![Web_app](screenshots/dbFile.png)
-#Database Image
+# Database Image
 ![image_final](screenshots/final.png)
-#compose
+# compose
 ![compose_time](screenshots/compose.png)
